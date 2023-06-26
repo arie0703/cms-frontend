@@ -1,6 +1,11 @@
 export interface Article {
-  _id: string
-  title: string
-  slug: string
-  body: string
+  id: string
+  attributes: {
+    title: string
+    content: string
+    category: string
+    createdAt: string
+    updetedAt: string
+    publishedAt: string
+  }
 }
