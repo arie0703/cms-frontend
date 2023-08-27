@@ -1,51 +1,41 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { getArticles } from './lib/articles'
-import type { Article } from './types/article'
+import { getAllWords } from './api/words/all'
+import { Words } from './types/words'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ articles }: { articles: Article[] }) {
+export default function Home({allWords}: {allWords: Words[]}) {
   return (
     <>
       <Head>
-        <title>My Blog</title>
-        <meta name="description" content="CMSを利用した個人サイト" />
+        <title>ポル単</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
+        <h2>ポルトガル語単語帳</h2>
         <ul>
-          {articles.map((article: Article) => {
-
-            // 詳細ページに渡すデータ
-            const query = {
-              id: article.id, 
-              title: article.attributes.title, 
-              content: article.attributes.content, 
-              category: article.attributes.category
-            }
-
+          {allWords.map((word) => {
             return (
-              <li key={article.id}>
-                <Link href={{ pathname: `articles/${article.id}`, query: query}}>{article.attributes.title}</Link>
-              </li>
-            )
-          })}
+              <div>
+                <p>{word.portuguese}</p>
+                <p>{word.japanese}</p>
+              </div>
+            );
+            })}
         </ul>
       </main>
     </>
   )
 }
 
-export const getStaticProps = async () => {
-  const fetchedResponse = await getArticles()
-  const articles: Article = fetchedResponse.data
-  return {
-    props: {
-      articles,
-    },
-  }
+export async function getServerSideProps() {
+
+  const data = await getAllWords();
+  // TimeStampをobjectに変換するため一旦JSON.parseをかます
+  const allWords = JSON.parse(JSON.stringify(data));
+  console.log(allWords);
+  return {props: { allWords }}
 }
