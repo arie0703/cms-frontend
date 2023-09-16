@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { getAllWords } from './api/words/all'
 import { Words } from './types/words'
+import { Word } from '@/src/components/Word'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,18 +15,20 @@ export default function Home({allWords}: {allWords: Words[]}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <h2>ポルトガル語単語帳</h2>
-        <ul>
-          {allWords.map((word) => {
-            return (
-              <div>
-                <p>{word.portuguese}</p>
-                <p>{word.japanese}</p>
-              </div>
-            );
+      <main className={`${styles.main} ${inter.className} ${styles.container}`}>
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <h2>ポルトガル語単語帳</h2>
+          </div>
+          
+          <ul>
+            {allWords.map((word) => {
+              return (
+                <Word portuguese={word.portuguese} japanese={word.japanese} />
+              );
             })}
-        </ul>
+          </ul>
+        </div>
       </main>
     </>
   )
