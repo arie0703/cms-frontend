@@ -1,7 +1,3 @@
-# Language Practice App with generative AI
-
-生成系AIを活用した言語学習アプリ
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
