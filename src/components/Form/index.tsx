@@ -1,5 +1,7 @@
 
 import { FormProvider, useForm } from 'react-hook-form';
+import { SubmitButton } from '../SubmitButton';
+import styles from '@/styles/components/form.module.scss';
 
 export const Form = () => {
 
@@ -33,12 +35,12 @@ export const Form = () => {
   };
 
   return (
-    <div>
+    <div className={styles['form']}>
       <FormProvider {...methods}>
         <form>
           <h2>単語を追加</h2>
-          <dl>
-            <dt>日本語</dt>
+          <dl className={`${styles['_input']} ${styles['dl01']}`}>
+            <dt className={styles['_title']}>日本語</dt>
             <dd>
               <input
                 id="japanese"
@@ -47,8 +49,8 @@ export const Form = () => {
               />
             </dd>
           </dl>
-          <dl>
-            <dt>ポルトガル語</dt>
+          <dl className={`${styles['_input']} ${styles['dl01']}`}>
+            <dt className={styles['_title']}>ポルトガル語</dt>
             <dd>
               <input
                 id="portuguese"
@@ -57,9 +59,7 @@ export const Form = () => {
               />
             </dd>
           </dl>
-          <button className="submit" onClick={() => submitData()} type="button">
-            Submit
-          </button>
+          <SubmitButton handleClick={() => submitData()} buttonText="Submit" />
         </form>
       </FormProvider>
     </div>

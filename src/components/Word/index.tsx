@@ -1,4 +1,5 @@
-import styles from '@/styles/word.module.scss'
+import styles from '@/styles/components/word.module.scss'
+import { useState } from 'react';
 
 interface WordProps {
   portuguese: string;
@@ -6,10 +7,17 @@ interface WordProps {
 }
 
 export const Word = ({ portuguese, japanese }: WordProps) => {
+
+  const [isFlipped, setIsFlipped] = useState<Boolean>(false);
+
   return (
-    <div className={styles.card}>
-      <p>{portuguese}</p>
-      <p>{japanese}</p>
+    <div className={styles.card} onClick={() => setIsFlipped(!isFlipped)}>
+      {isFlipped && (
+        <p>{japanese}</p>
+      )}
+      {!isFlipped && (
+        <p>{portuguese}</p>
+      )}
     </div>
   );
 };
