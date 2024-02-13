@@ -1,7 +1,7 @@
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-export default function Form() {
+export const Form = () => {
 
   const methods = useForm({
     mode: "onChange",
