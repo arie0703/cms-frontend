@@ -1,13 +1,11 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { getAllWords } from './api/words/all'
-import { Words } from './types/words'
-import { Word } from '@/src/components/Word'
+import Form from '@/src/components/Form'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({allWords}: {allWords: Words[]}) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -20,25 +18,9 @@ export default function Home({allWords}: {allWords: Words[]}) {
           <div className={styles.header}>
             <h2>ポルトガル語単語帳</h2>
           </div>
-          
-          <ul>
-            {allWords.map((word) => {
-              return (
-                <Word portuguese={word.portuguese} japanese={word.japanese} />
-              );
-            })}
-          </ul>
+          <Form />
         </div>
       </main>
     </>
   )
-}
-
-export async function getServerSideProps() {
-
-  const data = await getAllWords();
-  // TimeStampをobjectに変換するため一旦JSON.parseをかます
-  const allWords = JSON.parse(JSON.stringify(data));
-  console.log(allWords);
-  return {props: { allWords }}
 }
