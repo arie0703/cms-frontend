@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { Form } from '@/src/components/Form'
+import { WordList } from '../components/WordList'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function Home() {
             <h2>ポルトガル語単語帳</h2>
           </div>
           <Form />
+          <WordList />
         </div>
       </main>
     </>

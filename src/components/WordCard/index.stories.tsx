@@ -1,9 +1,9 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Word } from '.';
+import { WordCard } from '.';
 
-const meta: Meta<typeof Word> = {
-  title: "Word",
-  component: Word,
+const meta: Meta<typeof WordCard> = {
+  title: "WordCard",
+  component: WordCard,
   args: {
     japanese: "日本語",
     portuguese: "ポルトガル語"
@@ -12,7 +12,7 @@ const meta: Meta<typeof Word> = {
 
 export default meta
 
-type Story = StoryObj<typeof Word>;
+type Story = StoryObj<typeof WordCard>;
 
 export const Default: Story = {
   argTypes: {}
