@@ -1,12 +1,12 @@
 import styles from '@/styles/components/word.module.scss'
 import { useState } from 'react';
 
-interface WordProps {
+interface WordCardProps {
   portuguese: string;
   japanese: string;
 }
 
-export const Word = ({ portuguese, japanese }: WordProps) => {
+export const WordCard = ({ portuguese, japanese }: WordCardProps) => {
 
   const [isFlipped, setIsFlipped] = useState<Boolean>(false);
 

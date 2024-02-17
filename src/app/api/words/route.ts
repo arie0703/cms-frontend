@@ -4,7 +4,23 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function GET() {
-  const words = await getAllWords();
+  const words = await getAllWords().catch((err) => {
+    const result = {
+      status: 500,
+      body: err,
+      message: "単語の取得に失敗しました"
+    }
+    console.error(result);
+    throw result;
+  });
+
+  const result = {
+    status: 200,
+    data: words,
+    message: "単語の取得に成功しました",
+  }
+  console.log(result);
+
   return NextResponse.json(words);
 }
 
@@ -51,7 +67,7 @@ export async function DELETE(request: NextRequest) {
   return NextResponse.json(words);
 }
 
-async function getAllWords() {
+export async function getAllWords() {
   const words = await prisma.word.findMany();
   return words;
 }
