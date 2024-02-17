@@ -1,13 +1,8 @@
 .main {
-  padding: 6rem;
   min-height: 100vh;
-}
-
-.header {
-  text-align: center
+  max-width: 414px;
 }
 
 .container {
   margin: 0 auto;
-  width: 70%;
 }

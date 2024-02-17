@@ -2,8 +2,9 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { Form } from '@/src/components/Form'
 import { WordList } from '../components/WordList'
+import { Header } from '../components/Header'
+import { Spacer } from '../components/Spacer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,10 +18,8 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className} ${styles.container}`}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h2>ポルトガル語単語帳</h2>
-          </div>
-          <Form />
+          <Header />
+          <Spacer height={55} />
           <WordList />
         </div>
       </main>
