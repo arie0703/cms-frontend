@@ -12,6 +12,10 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.10",
     "@prisma/client": "^5.9.1",
     "@types/node": "20.1.0",
     "@types/react": "18.2.6",

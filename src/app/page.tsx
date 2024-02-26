@@ -5,10 +5,14 @@ import styles from '@/styles/Home.module.css'
 import { WordList } from '../components/WordList'
 import { Header } from '../components/Header'
 import { Spacer } from '../components/Spacer'
+import { NavigationBar } from '../components/NavigationBar'
+import { useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [selectedContent, setSelectedContent] = useState<number>(0)
+
   return (
     <>
       <Head>
@@ -21,6 +25,7 @@ export default function Home() {
           <Header />
           <Spacer height={55} />
           <WordList />
+          <NavigationBar selectedContent={selectedContent} setSelectedContent={setSelectedContent} />
         </div>
       </main>
     </>
