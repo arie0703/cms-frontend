@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "migrate:local": "npx prisma migrate dev --schema ./prisma/local/schema.prisma",
+    "migrate:prod": "npx prisma migrate dev --schema ./prisma/prod/schema.prisma"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",

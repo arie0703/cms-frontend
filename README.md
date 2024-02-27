@@ -4,15 +4,58 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Migration
 
-```
+```shell
 npx prisma migrate dev --name XXXX
+
+# local
+yarn migrate:local
+
+# prod
+yarn migrate:local
 ```
 
 Prisma Studio
 
-```
+```shell
 npx prisma studio
 ```
+
+## postgreSQL (local)
+
+### macOSで操作
+
+```shell
+# 起動
+brew services start postgresql
+
+# 停止
+brew services stop postgresql
+
+# データベースへ接続
+postgres -d postgres
+```
+
+### DB内での操作
+
+```sql
+# データベース一覧
+\l;
+
+# テーブル一覧
+\dt;
+
+# データベース作成
+CREATE DATABASE portan;
+```
+
+### Table Plusで接続
+User: DBのownerとなっているユーザー名
+
+Host: `localhost`
+
+Database: `portan`
+
+Port: `5432`
 
 ## Getting Started
 
